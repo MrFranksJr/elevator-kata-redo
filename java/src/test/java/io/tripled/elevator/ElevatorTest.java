@@ -2,6 +2,9 @@ package io.tripled.elevator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ElevatorTest {
@@ -30,6 +33,13 @@ public class ElevatorTest {
         //elevator needs to travel to third floor
         assertEquals(Floor.FLOOR_3, elevator.getCurrentFloor());
         //elevator needs to report that the doors opened at the third floor
-        assertEquals("<DING> - door open at floor 3", testFeedBack.doorsOpenedAtFloor());
+        assertEquals(Floor.FLOOR_3, testFeedBack.doorsOpenedAtFloor());
+    }
+
+    @Test
+    void elevatorReportsOnFloorsPassed() {
+        elevator.call(Floor.FLOOR_3);
+        //when traveling to a floor, elevator reports on all floors passed
+        assertEquals(List.of(Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3), testFeedBack.allFloorsPassed());
     }
 }
