@@ -7,7 +7,6 @@ public class Elevator {
     private final Feedback feedback;
     private final CallParser callParser;
     private Floor currentFloor = Floor.GROUND;
-    public List<Floor> callList = new ArrayList<>();
 
     public Elevator(Feedback feedback, CallParser callParser) {
         this.feedback = feedback;

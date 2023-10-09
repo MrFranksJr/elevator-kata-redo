@@ -7,7 +7,9 @@ public enum Floor {
     GROUND(0),
     FLOOR_1(1),
     FLOOR_2(2),
-    FLOOR_3(3);
+    FLOOR_3(3),
+    FLOOR_4(4),
+    FLOOR_5(5);
 
     public int floorNumber;
 

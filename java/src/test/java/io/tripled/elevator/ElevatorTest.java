@@ -78,10 +78,17 @@ public class ElevatorTest {
     }
 
     @Test
-    void elevatorCanParseMutlipleCallsInAllDirections() {
+    void elevatorCanParseMultipleCallsInAllDirections() {
         elevator.call(List.of(Floor.FLOOR_3, Floor.BASEMENT, Floor.GROUND, Floor.BASEMENT, Floor.FLOOR_2, Floor.BASEMENT, Floor.FLOOR_1, Floor.FLOOR_3));
 
         assertEquals(List.of(Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_1, Floor.GROUND, Floor.BASEMENT, Floor.GROUND, Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3), testFeedBack.allFloorsPassed());
         assertEquals(List.of(Floor.FLOOR_3, Floor.FLOOR_2, Floor.GROUND, Floor.BASEMENT, Floor.FLOOR_1, Floor.FLOOR_3), testFeedBack.allDoorsOpened());
+    }
+
+    @Test
+    void parseComplexScenarioPart2() {
+        elevator.call(List.of(Floor.FLOOR_1, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_4, Floor.GROUND, Floor.FLOOR_2, Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_5, Floor.FLOOR_3, Floor.BASEMENT, Floor.FLOOR_5, Floor.GROUND, Floor.FLOOR_4, Floor.FLOOR_2, Floor.FLOOR_2, Floor.FLOOR_1, Floor.BASEMENT, Floor.FLOOR_1));
+
+        assertEquals(List.of(Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_4, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_1, Floor.GROUND, Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_4, Floor.FLOOR_5, Floor.FLOOR_4, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_1, Floor.GROUND, Floor.BASEMENT, Floor.GROUND, Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_4, Floor.FLOOR_5, Floor.FLOOR_4, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_1, Floor.GROUND, Floor.BASEMENT, Floor.GROUND, Floor.FLOOR_1), testFeedBack.allDoorsOpened());
     }
 }
