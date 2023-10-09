@@ -43,4 +43,6 @@ public enum Floor {
 
     private boolean goingUp(Floor destination) { return destination.floorNumber > this.floorNumber; }
     private boolean goingDown(Floor destination) { return destination.floorNumber < this.floorNumber; }
+
+    public boolean hasReached(Floor destination) { return destination == this; }
 }
