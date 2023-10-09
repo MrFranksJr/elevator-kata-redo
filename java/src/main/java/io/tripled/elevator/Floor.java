@@ -38,11 +38,8 @@ public enum Floor {
     public Floor goDown() {
         return Floor.byFloorNumber(this.floorNumber - 1);
     }
-
     public boolean notReached(Floor destination) { return destination != this; }
-
     private boolean goingUp(Floor destination) { return destination.floorNumber > this.floorNumber; }
     private boolean goingDown(Floor destination) { return destination.floorNumber < this.floorNumber; }
-
     public boolean hasReached(Floor destination) { return destination == this; }
 }
