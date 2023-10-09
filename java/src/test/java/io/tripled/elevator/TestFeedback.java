@@ -18,6 +18,11 @@ public class TestFeedback implements Feedback {
         floorsPassed.add(floor);
     }
 
+    public void clearLogs() {
+        floorsPassed.clear();
+        openedDoors.clear();
+    }
+
     public List<Floor> allFloorsPassed() {
         return floorsPassed;
     }

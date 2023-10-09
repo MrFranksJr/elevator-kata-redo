@@ -44,11 +44,11 @@ public class ElevatorTest {
     }
 
     @Test
-    void elevatorReportsOnDoorsOpened() {
+    void elevatorReportsOnDoorsOpenedPerCallMade() {
         elevator.call(Floor.FLOOR_3);
         assertEquals(List.of(Floor.FLOOR_3), testFeedBack.allDoorsOpened());
         elevator.call(Floor.FLOOR_1);
-        assertEquals(List.of(Floor.FLOOR_3, Floor.FLOOR_1), testFeedBack.allDoorsOpened());
+        assertEquals(List.of(Floor.FLOOR_1), testFeedBack.allDoorsOpened());
     }
 
     @Test

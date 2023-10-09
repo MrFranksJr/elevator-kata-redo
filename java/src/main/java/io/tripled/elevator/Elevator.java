@@ -17,6 +17,7 @@ public class Elevator {
     }
 
     public void call(Floor callOrigin, Floor callDestination) {
+        feedback.clearLogs();
         moveTo(callOrigin);
         moveTo(callDestination);
     }
