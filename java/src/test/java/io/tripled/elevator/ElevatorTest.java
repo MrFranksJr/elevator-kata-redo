@@ -76,4 +76,12 @@ public class ElevatorTest {
         assertEquals(List.of(Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_1, Floor.GROUND, Floor.BASEMENT), testFeedBack.allFloorsPassed());
         assertEquals(List.of(Floor.FLOOR_3, Floor.FLOOR_2, Floor.GROUND, Floor.BASEMENT), testFeedBack.allDoorsOpened());
     }
+
+    @Test
+    void elevatorCanParseMutlipleCallsInAllDirections() {
+        elevator.call(List.of(Floor.FLOOR_3, Floor.BASEMENT, Floor.GROUND, Floor.BASEMENT, Floor.FLOOR_2, Floor.BASEMENT, Floor.FLOOR_1, Floor.FLOOR_3));
+
+        assertEquals(List.of(Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_1, Floor.GROUND, Floor.BASEMENT, Floor.GROUND, Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3), testFeedBack.allFloorsPassed());
+        assertEquals(List.of(Floor.FLOOR_3, Floor.FLOOR_2, Floor.GROUND, Floor.BASEMENT, Floor.FLOOR_1, Floor.FLOOR_3), testFeedBack.allDoorsOpened());
+    }
 }
