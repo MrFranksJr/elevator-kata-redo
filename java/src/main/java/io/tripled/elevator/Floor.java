@@ -1,5 +1,7 @@
 package io.tripled.elevator;
 
+import java.util.stream.Stream;
+
 public enum Floor {
     BASEMENT(-1),
     GROUND(0),
@@ -9,7 +11,18 @@ public enum Floor {
 
     public int floorNumber;
 
-    Floor(int i) {
-        this.floorNumber = i;
+    Floor(int floorNumber) {
+        this.floorNumber = floorNumber;
+    }
+
+    private static Floor byFloorNumber(int number) {
+        return Stream.of(values())
+                .filter(floor -> floor.floorNumber == number)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Floor goUp() {
+        return Floor.byFloorNumber(this.floorNumber + 1);
     }
 }

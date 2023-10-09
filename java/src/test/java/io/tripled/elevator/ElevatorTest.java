@@ -42,4 +42,11 @@ public class ElevatorTest {
         //when traveling to a floor, elevator reports on all floors passed
         assertEquals(List.of(Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3), testFeedBack.allFloorsPassed());
     }
+
+    @Test
+    void elevatorShouldBeAbleToGoDown() {
+        elevator.call(Floor.BASEMENT);
+        assertEquals(List.of(Floor.BASEMENT), testFeedBack.allFloorsPassed());
+        assertEquals(Floor.BASEMENT, testFeedBack.allFloorsPassed());
+    }
 }
