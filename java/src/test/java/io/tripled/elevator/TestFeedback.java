@@ -5,14 +5,12 @@ import java.util.List;
 
 public class TestFeedback implements Feedback {
 
-    private Floor floor;
     public List<Floor> floorsPassed = new ArrayList<>();
-
-    public Floor doorsOpenedAtFloor() { return floor; }
+    public List<Floor> openedDoors = new ArrayList<>();
 
     @Override
     public void doorsOpened(Floor floor) {
-        this.floor = floor;
+        openedDoors.add(floor);
     }
 
     @Override
@@ -23,4 +21,5 @@ public class TestFeedback implements Feedback {
     public List<Floor> allFloorsPassed() {
         return floorsPassed;
     }
+    public List<Floor> allDoorsOpened() { return openedDoors; }
 }

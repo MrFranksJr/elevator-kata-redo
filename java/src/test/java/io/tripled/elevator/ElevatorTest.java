@@ -33,7 +33,7 @@ public class ElevatorTest {
         //elevator needs to travel to third floor
         assertEquals(Floor.FLOOR_3, elevator.getCurrentFloor());
         //elevator needs to report that the doors opened at the third floor
-        assertEquals(Floor.FLOOR_3, testFeedBack.doorsOpenedAtFloor());
+        assertEquals(List.of(Floor.FLOOR_3), testFeedBack.allDoorsOpened());
     }
 
     @Test
@@ -46,15 +46,23 @@ public class ElevatorTest {
     @Test
     void elevatorReportsOnDoorsOpened() {
         elevator.call(Floor.FLOOR_3);
-        assertEquals(Floor.FLOOR_3, testFeedBack.doorsOpenedAtFloor());
+        assertEquals(List.of(Floor.FLOOR_3), testFeedBack.allDoorsOpened());
         elevator.call(Floor.FLOOR_1);
-        assertEquals(Floor.FLOOR_1, testFeedBack.doorsOpenedAtFloor());
+        assertEquals(List.of(Floor.FLOOR_3, Floor.FLOOR_1), testFeedBack.allDoorsOpened());
     }
 
     @Test
     void elevatorShouldBeAbleToGoDown() {
         elevator.call(Floor.BASEMENT);
         assertEquals(List.of(Floor.BASEMENT), testFeedBack.allFloorsPassed());
-        assertEquals(Floor.BASEMENT, testFeedBack.doorsOpenedAtFloor());
+        assertEquals(List.of(Floor.BASEMENT), testFeedBack.allDoorsOpened());
+    }
+
+    @Test
+    void elevatorShouldBeAbleToParseFullCall() {
+        elevator.call(Floor.FLOOR_3, Floor.BASEMENT);
+
+        assertEquals(List.of(Floor.FLOOR_1, Floor.FLOOR_2, Floor.FLOOR_3, Floor.FLOOR_2, Floor.FLOOR_1, Floor.GROUND, Floor.BASEMENT), testFeedBack.allFloorsPassed());
+        assertEquals(List.of(Floor.FLOOR_3, Floor.BASEMENT), testFeedBack.allDoorsOpened());
     }
 }

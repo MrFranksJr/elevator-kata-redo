@@ -25,8 +25,10 @@ public class Elevator {
         while (currentFloor.notReached(destination)) {
             currentFloor = currentFloor.move(destination);
             feedback.floorPassed(currentFloor);
-        }
 
-        feedback.doorsOpened(this.currentFloor);
+            if (currentFloor == destination) {
+                feedback.doorsOpened(this.currentFloor);
+            }
+        }
     }
 }
