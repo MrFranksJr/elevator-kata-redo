@@ -22,7 +22,25 @@ public enum Floor {
                 .orElse(null);
     }
 
+    public Floor move(Floor destination) {
+        if (goingUp(destination)) {
+            return goUp();
+        }
+        else if (goingDown(destination)) {
+            return goDown();
+        }
+        else return null;
+    }
+
     public Floor goUp() {
         return Floor.byFloorNumber(this.floorNumber + 1);
     }
+    public Floor goDown() {
+        return Floor.byFloorNumber(this.floorNumber - 1);
+    }
+
+    public boolean notReached(Floor destination) { return destination != this; }
+
+    private boolean goingUp(Floor destination) { return destination.floorNumber > this.floorNumber; }
+    private boolean goingDown(Floor destination) { return destination.floorNumber < this.floorNumber; }
 }

@@ -44,9 +44,17 @@ public class ElevatorTest {
     }
 
     @Test
+    void elevatorReportsOnDoorsOpened() {
+        elevator.call(Floor.FLOOR_3);
+        assertEquals(Floor.FLOOR_3, testFeedBack.doorsOpenedAtFloor());
+        elevator.call(Floor.FLOOR_1);
+        assertEquals(Floor.FLOOR_1, testFeedBack.doorsOpenedAtFloor());
+    }
+
+    @Test
     void elevatorShouldBeAbleToGoDown() {
         elevator.call(Floor.BASEMENT);
         assertEquals(List.of(Floor.BASEMENT), testFeedBack.allFloorsPassed());
-        assertEquals(Floor.BASEMENT, testFeedBack.allFloorsPassed());
+        assertEquals(Floor.BASEMENT, testFeedBack.doorsOpenedAtFloor());
     }
 }

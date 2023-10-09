@@ -12,11 +12,20 @@ public class Elevator {
         return currentFloor;
     }
 
-    public void call(Floor destination) {
-        do {
-            currentFloor = currentFloor.goUp();
+    public void call(Floor callOrigin) {
+        call(callOrigin, callOrigin);
+    }
+
+    public void call(Floor callOrigin, Floor callDestination) {
+        moveTo(callOrigin);
+        moveTo(callDestination);
+    }
+
+    private void moveTo(Floor destination) {
+        while (currentFloor.notReached(destination)) {
+            currentFloor = currentFloor.move(destination);
             feedback.floorPassed(currentFloor);
-        } while (destination.floorNumber != currentFloor.floorNumber);
+        }
 
         feedback.doorsOpened(this.currentFloor);
     }
